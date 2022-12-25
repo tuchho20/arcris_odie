@@ -32,7 +32,7 @@ cmd=(dialog --keep-tite --no-collapse --cr-wrap --backtitle "${title}" --column-
 options=(1 " > | xfce4 | Xfce desktop| <"
          2 " > | gnome | GNOME Classic desktop| <"
          3 " > | plasma | KDE Plasma desktop| <"
-         4 " > | jwm | Compu| <"
+         4 " > | jwm | JWM| <"
          5 " > | mate | Mate GTK3 desktop| <"
          6 " > | lxqt | LXDE-Qt & Razor-qt projects| <"
          7 " > | lxde | The Lightweight X11 GTK2| <"
@@ -140,21 +140,48 @@ options=(1 "  jwm || Sistema Completo  "
      
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
-for choice in $choices
-do
-    case $choice in
 
-        1)  DE="JWM"
-
-            ;;
           
-        2)  DE="KDE Plasma Lite"
+        
+    esac
+done
+           
+        5)  #INICIO MATE
+            DE="MATE"
+            ;;
 
-            ;; 
+        6)  #INICIO LXQt
+            DE="LXQt"
+            ;;
 
+        7)  #INICIO LXDE
+            DE="LXDE"
+            ;;
+
+        8)  #INICIO LXDE GTK3
+            DE="LXDE GTK3"
+            ;;
+
+        9)  #INICIO Budgie
+            DE="Budgie"
+            ;;
+
+        10)  #INICIO Cinnamon
+            DE="Cinnamon"
+            ;;
+
+        11)  #INICIO GNOME 2
+            DE="GNOME 2"
+            ;;
+
+        12)  #INICIO Enlightenment
+            DE="Enlightenment"
+            ;;
+            
     esac
 done
             ;;
+           
            
         5)  #INICIO MATE
             DE="MATE"
