@@ -136,16 +136,21 @@ cmd=(dialog --keep-tite --backtitle "${title}" \
 --ok-label '< Seleccionar >' --nocancel --menu "\n \
 Selecciona una opción para JWM \n " 12 60 20)
 
-options=(1 "  jwm || Sistema Completo  "       
+options=(1 "  jwm || Sistema Completo  ")      
      
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
+for choice in $choices
+do
+    case $choice in
 
-          
+        1)  DE="JWM"
+            ;;
         
     esac
 done
-           
+            ;;
+              
         5)  #INICIO MATE
             DE="MATE"
             ;;
@@ -183,42 +188,11 @@ done
             ;;
            
            
-        5)  #INICIO MATE
-            DE="MATE"
-            ;;
-
-        6)  #INICIO LXQt
-            DE="LXQt"
-            ;;
-
-        7)  #INICIO LXDE
-            DE="LXDE"
-            ;;
-
-        8)  #INICIO LXDE GTK3
-            DE="LXDE GTK3"
-            ;;
-
-        9)  #INICIO Budgie
-            DE="Budgie"
-            ;;
-
-        10)  #INICIO Cinnamon
-            DE="Cinnamon"
-            ;;
-
-        11)  #INICIO GNOME 2
-            DE="GNOME 2"
-            ;;
-
-        12)  #INICIO Enlightenment
-            DE="Enlightenment"
-            ;;
             
-        13)  #INICIO Enlightenment
-            DE="jwm"
-            ;;   
-
+            
+        
+   
+        
 
     esac
 done
