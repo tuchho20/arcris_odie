@@ -40,7 +40,8 @@ options=(1 " > | xfce4 | Xfce desktop| <"
          9 " > | budgie-desktop | Budgie desktop| <"
          10 " > | cinnamon | Cinnamon desktop| <"
          11 " > | gnome-flashback | GNOME 2 desktop| <"
-         12 " > | enlightenment | Enlightenment desktop| <")
+         12 " > | enlightenment | Enlightenment desktop| <"
+         13 " > | jwm | Enlightenment desktop| <")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -166,6 +167,10 @@ done
         12)  #INICIO Enlightenment
             DE="Enlightenment"
             ;;
+            
+        13)  #INICIO Enlightenment
+            DE="jwm"
+            ;;   
 
 
     esac
@@ -988,6 +993,29 @@ sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greet
   ;;
 
 
+"JWM")
+  echo "" 
+  echo "Se esta instalando el entorno JWM:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S thunar --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ly --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+  
+  arch-chroot /mnt /bin/bash -c "systemctl enable ly"
+
+  ;;
+
+
+
 "i3wm")
   echo "" 
   echo "Se esta instalando el entorno i3wm:" 
@@ -1153,14 +1181,25 @@ sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greet
   arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
   arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
 
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S awesome-git --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S dmenu --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S rofi --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S st --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S rxvt-unicode --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ly --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ly-reloaded-git --noeditmenu --noconfirm --needed"
 
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S pcmanfm --noeditmenu --noconfirm --needed"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S google-chrome --noeditmenu --noconfirm --needed" 
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S vivaldi --noeditmenu --noconfirm --needed"  
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S vivaldi-ffmpeg-codecs --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ristretto --noeditmenu --noconfirm --needed"  
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S tmux --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S neovim --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S exa --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xarchiver --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S thunar --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S thunar-archive-plugin --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S thunar-volman --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S tumbler --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbs --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ffmpegthumbnailer --noeditmenu --noconfirm --needed"
@@ -1179,7 +1218,7 @@ sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greet
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S gnome-themes-extra --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S lxappearance --noeditmenu --noconfirm --needed"
 
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S feh --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S nitrogen --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S xclip --noeditmenu --noconfirm --needed"
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S maim --noeditmenu --noconfirm --needed"
 
