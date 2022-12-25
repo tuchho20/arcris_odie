@@ -136,7 +136,7 @@ cmd=(dialog --keep-tite --backtitle "${title}" \
 --ok-label '< Seleccionar >' --nocancel --menu "\n \
 Selecciona una opción para JWM \n " 12 60 20)
 
-options=(1 "  jwm || Sistema Completo  ")      
+options=(1 "  JWM || Sistema Completo  ")      
      
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -670,6 +670,27 @@ sleep 10
   ;;
 
 
+"JWM")
+  echo "" 
+  echo "Se esta instalando el entorno JWM:" 
+  echo "" 
+
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
+  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
+
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S thunar --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ly --noeditmenu --noconfirm --needed"
+  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
+ 
+  arch-chroot /mnt /bin/bash -c "systemctl enable ly"
+
+ ;;
+ 
+
 "MATE")
   echo "" 
   echo "Se esta instalando el entorno MATE:" 
@@ -957,28 +978,6 @@ sed -i 's/#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greet
   arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
 
   arch-chroot /mnt /bin/bash -c "systemctl enable entrance"
-
-  ;;
-
-
-"JWM")
-  echo "" 
-  echo "Se esta instalando el entorno JWM:" 
-  echo "" 
-
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-apps --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-server --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-xinit --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xorg-twm --noconfirm"
-  arch-chroot /mnt /bin/bash -c "pacman -S xterm --noconfirm"
-
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S thunar --noeditmenu --noconfirm --needed"
-
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S ly --noeditmenu --noconfirm --needed"
-  arch-chroot /mnt /bin/bash -c "sudo -u $username yay -S accountsservice --noeditmenu --noconfirm --needed"
-  
-  arch-chroot /mnt /bin/bash -c "systemctl enable ly"
 
   ;;
 
