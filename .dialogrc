@@ -30,7 +30,7 @@ use_shadow = ON
 use_colors = ON
 
 # Screen color
-screen_color = (WHITE,BLACK,ON)
+screen_color = (WHITE,BLUE,ON)
 
 # Shadow color
 shadow_color = (BLACK,RED,ON)
@@ -111,7 +111,7 @@ check_color = dialog_color
 check_selected_color = button_active_color
 
 # Up arrow color
-uarrow_color = (RED,WHITE,ON)
+uarrow_color = (GREEN,WHITE,ON)
 
 # Down arrow color
 darrow_color = uarrow_color
@@ -123,10 +123,10 @@ itemhelp_color = (WHITE,BLACK,OFF)
 form_active_text_color = button_active_color
 
 # Form text color
-form_text_color = (WHITE,RED,ON)
+form_text_color = (WHITE,GREEN,ON)
 
 # Readonly form item color
-form_item_readonly_color = (RED,WHITE,ON)
+form_item_readonly_color = (GREEB,WHITE,ON)
 
 # Dialog box gauge color
 gauge_color = title_color
