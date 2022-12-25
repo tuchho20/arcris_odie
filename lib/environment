@@ -41,7 +41,7 @@ options=(1 " > | xfce4 | Xfce desktop| <"
          10 " > | cinnamon | Cinnamon desktop| <"
          11 " > | gnome-flashback | GNOME 2 desktop| <"
          12 " > | enlightenment | Enlightenment desktop| <"
-         13 " > | jwm | Enlightenment desktop| <")
+         13 " > | jwm | Compu| <")
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
@@ -132,10 +132,35 @@ done
             ;;
 
 
-        4)  #INICIO DEEPIN
-            DE="Deepin"
+        4)  #INICIO JWM
+          cmd=(dialog --keep-tite --backtitle "${title}" \
+--no-collapse --cr-wrap --column-separator "|" --no-tags \
+--ok-label '< Seleccionar >' --nocancel --menu "\n \
+Selecciona una opción para JWM)
+
+options=(1 "   jwm || Sistema Completo  "       
+     
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+for choice in $choices
+
+do
+
+    case $choice in
+
+        1)  DE="KDE Plasma"
+
             ;;
 
+            
+
+        2)  DE="KDE Plasma Lite"
+
+            ;; 
+    esac
+done
+            ;;
+           
         5)  #INICIO MATE
             DE="MATE"
             ;;
